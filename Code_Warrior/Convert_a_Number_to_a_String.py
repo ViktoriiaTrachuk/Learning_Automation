@@ -1,6 +1,6 @@
 def number_to_string1(num):
-    return [str(digit) for digit in str(num)]
-print(number_to_string1(123))
+    return list([str(digit) for digit in str(num)])
+print(number_to_string1(-123))
 
 def number_to_string2(num):
     return '{}'.format(num)
@@ -19,9 +19,33 @@ def number_to_string5(num):
     while num > 0:
         digits.append(str(num % 10))
         num //= 10
-    return digits
+    digits.reverse()
+    result = ''.join(digits)
+    return result
+print(number_to_string5(345678))
 
-print(number_to_string5(12345))
+"""The condition while num >= 0 will result in an infinite loop when num is zero, 
+    as it will keep appending '0' to the list digits. 
+    To handle zero properly and also to correct any issues with the negative numbers, 
+    the function should check if num is zero at the beginning and handle it separately"""
+   
+def number_to_string6(num):
+    if num == 0:
+        return '0'
+    if num < 0:
+        neg = '-'
+        num = abs(num)
+    
+    digits = []
+    while num > 0:
+        digits.append(str(num % 10))
+        num //= 10
+    digits.reverse()
+    result = neg + ''.join(digits)
+    return result
+print(number_to_string6(-10))
+print(number_to_string6(0))
+print(type(number_to_string6(-10)))
 
 # def number_to_string6(num):
 #     digits = []
