@@ -1,17 +1,21 @@
 def number_to_string1(num):
     return list([str(digit) for digit in str(num)])
+print('test1')
 print(number_to_string1(-123))
 
 def number_to_string2(num):
     return '{}'.format(num)
+print('test2')
 print(number_to_string2(-100))
 
 def number_to_string3(num):
     return f'{num}'
+print('test3')
 print(number_to_string3(23))
 
 def number_to_string4(num):
     return str(num)
+print('test4')
 print(type(number_to_string4(4.5)))
 
 def number_to_string5(num):
@@ -22,6 +26,7 @@ def number_to_string5(num):
     digits.reverse()
     result = ''.join(digits)
     return result
+print('test5')
 print(number_to_string5(345678))
 
 """The condition while num >= 0 will result in an infinite loop when num is zero, 
@@ -43,9 +48,28 @@ def number_to_string6(num):
     digits.reverse()
     result = neg + ''.join(digits)
     return result
+print('test6')
 print(number_to_string6(-10))
 print(number_to_string6(0))
 print(type(number_to_string6(-10)))
+
+def number_to_string7(num):
+    if num == 0:
+        return '0'
+    if num < 0:
+        neg = '-'
+        num = abs(num)
+    digits =[] #if not to use digits - we will have error in digits.append command - AttributeError: 'int' object has no attribute 'append'
+    while num > 0:
+        digits.append(str(num % 10))
+        num //= 10
+    digits.reverse()
+    result = neg + ''.join(digits)
+    return result
+print('test7')
+print(number_to_string7(-10))
+print(number_to_string7(0))
+print(type(number_to_string7(-10)))
 
 # def number_to_string6(num):
 #     digits = []
