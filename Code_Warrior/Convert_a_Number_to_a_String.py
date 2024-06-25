@@ -1,17 +1,14 @@
 def number_to_string1(num):
-    return list([str(digit) for digit in str(num)])
-print('test1')
-print(number_to_string1(-123))
+    return str([str(digit) for digit in str(num)])
+print("Test1: " + number_to_string1(-123))
 
 def number_to_string2(num):
     return '{}'.format(num)
-print('test2')
-print(number_to_string2(-100))
+print("Test2: " + number_to_string2(-100))
 
 def number_to_string3(num):
     return f'{num}'
-print('test3')
-print(number_to_string3(23))
+print("Test3: " + number_to_string3(23))
 
 def number_to_string4(num):
     return str(num)
@@ -26,8 +23,7 @@ def number_to_string5(num):
     digits.reverse()
     result = ''.join(digits)
     return result
-print('test5')
-print(number_to_string5(345678))
+print("Test5: " + number_to_string5(345678))
 
 """The condition while num >= 0 will result in an infinite loop when num is zero, 
     as it will keep appending '0' to the list digits. 
@@ -48,9 +44,8 @@ def number_to_string6(num):
     digits.reverse()
     result = neg + ''.join(digits)
     return result
-print('test6')
-print(number_to_string6(-10))
-print(number_to_string6(0))
+print("Test6.1: " + number_to_string6(-10))
+print("Test6.2: " + number_to_string6(0))
 print(type(number_to_string6(-10)))
 
 def number_to_string7(num):
@@ -66,9 +61,8 @@ def number_to_string7(num):
     digits.reverse()
     result = neg + ''.join(digits)
     return result
-print('test7')
-print(number_to_string7(-10))
-print(number_to_string7(0))
+print("Test7.1: " + number_to_string7(-10))
+print("Test7.2: " + number_to_string7(0))
 print(type(number_to_string7(-10)))
 
 # def number_to_string6(num):
