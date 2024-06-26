@@ -73,3 +73,17 @@ print(type(number_to_string7(-10)))
 # print number_to_string6(321)
             
 # print(number_to_string6(123))
+def number_to_string8(num):
+    if num < 0:
+        return "-" + number_to_string8(abs(num))
+    if num == 0:
+        return 0
+
+    result = ""
+    while num > 0:
+        digit = num % 10
+        result = chr(ord("0") + digit) + result
+        num = num // 10
+    return result
+print(number_to_string8(-321231))
+print(type(number_to_string8(-321231)))
