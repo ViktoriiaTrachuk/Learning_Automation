@@ -1,0 +1,38 @@
+# In this kata, you are asked to square every digit of a number and concatenate them.
+# For example, if we run 9119 through the function, 811181 will come out, because 92 is 81 and 12 is 1. (81-1-1-81)
+# Example #2: An input of 765 will/should return 493625 because 72 is 49, 62 is 36, and 52 is 25. (49-36-25)
+# Note: The function accepts an integer and returns an integer.
+
+def square_digits1(num):
+    result = ""
+    num_str = str(num)
+    
+    for i in num_str:
+        squared = int(i) ** 2
+        result += str(squared)
+        
+    return int(result)
+
+print(square_digits1(9119))
+print(square_digits1(234564))
+print(square_digits1(0))
+print(square_digits1(765))
+
+
+def square_digits2(num):
+    res = ""
+    for i in str(num):
+        res += str(int(i) ** 2)
+    return int(res)
+print(square_digits2(9119))
+print(square_digits2(234564))
+print(square_digits2(0))
+print(square_digits2(765))
+
+
+def square_digits3(num):
+    return int(''.join(str(int(i) ** 2) for i in str(num)))
+print(square_digits3(9119))
+print(square_digits3(234564))
+print(square_digits3(0))
+print(square_digits3(765))
