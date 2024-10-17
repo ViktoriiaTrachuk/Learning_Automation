@@ -1,55 +1,12 @@
-      # Document-ai.v7.replicated
-      # Project empty 
-      # invoice: 
-      # https://ml-api.v7.replicated.docai.h2o.dev/v1alpha/projects/bd6c722c-410f-4fae-92c0-65c8a7c4babf/documentAI/models/43e87803-5183-4834-80c3-7ca1d0eeb023/versions/1:download
-      # 
-      #id_card:
-      # https://ml-api.v7.replicated.docai.h2o.dev/v1alpha/projects/bd6c722c-410f-4fae-92c0-65c8a7c4babf/documentAI/models/a58b188f-d04e-4873-bcf8-5a8a7048521f/versions/1:download
-      
-      # page_classifier: 
-      # https://ml-api.v7.replicated.docai.h2o.dev/v1alpha/projects/bd6c722c-410f-4fae-92c0-65c8a7c4babf/documentAI/models/0c1f2f28-ad45-42aa-9519-bf29a534bed7/versions/1:download
-
-
-
-
-      # page class model (invoice, drivers-license)
-      # - source: https://ml-api.v7.replicated.docai.h2o.dev/v1alpha/projects/9d140af5-9baf-44b5-8bd1-b0d9a16ce88b/documentAI/models/c2bc6e17-4a09-433f-811f-c50e7c278763/versions/1:download       
-      #   name: projects/9d140af5-9baf-44b5-8bd1-b0d9a16ce88b/documentAI/models/c2bc6e17-4a09-433f-811f-c50e7c278763/versions/1
-      
-      # # invoice
-      # - source: https://ml-api.v7.replicated.docai.h2o.dev/v1alpha/projects/9d140af5-9baf-44b5-8bd1-b0d9a16ce88b/documentAI/models/a80f6b1d-3882-4067-9a03-8cd341c120f2/versions/1:download    
-      #   name: projects/9d140af5-9baf-44b5-8bd1-b0d9a16ce88b/documentAI/models/a80f6b1d-3882-4067-9a03-8cd341c120f2/versions/1
-      
-      # # id card
-      # - source: https://ml-api.v7.replicated.docai.h2o.dev/v1alpha/projects/9d140af5-9baf-44b5-8bd1-b0d9a16ce88b/documentAI/models/e4de7437-2e2a-4f10-83f9-fc4cb49e0797/versions/1:download
-      #   name: projects/9d140af5-9baf-44b5-8bd1-b0d9a16ce88b/documentAI/models/e4de7437-2e2a-4f10-83f9-fc4cb49e0797/versions/1
-      
-      # https://document-ai.aws23102-upg-126l.qa.h2o.dev
-
-      # Invoice
-      # projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/43da0354-035e-4037-8f4b-87e0405a96a5/versions/1
-      # https://ml-api.aws23102-upg-126l.qa.h2o.dev/v1alpha/projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/43da0354-035e-4037-8f4b-87e0405a96a5/versions/1:download
-      
-      # id_card
-      # projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/be582881-38dc-488b-bc42-a3d0b993a98a/versions/1
-      # https://ml-api.aws23102-upg-126l.qa.h2o.dev/v1alpha/projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/be582881-38dc-488b-bc42-a3d0b993a98a/versions/1:download
-       
-      # page classifier
-      # projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/57d3faac-e277-4ded-a952-d92aac75504f/versions/1
-      # https://ml-api.aws23102-upg-126l.qa.h2o.dev/v1alpha/projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/57d3faac-e277-4ded-a952-d92aac75504f/versions/1:download
-
-source: https://ml-api.v7.replicated.docai.h2o.dev/v1alpha/projects/bd6c722c-410f-4fae-92c0-65c8a7c4babf/documentAI/models/0c1f2f28-ad45-42aa-9519-bf29a534bed7/versions/1:download
-        name: projects/bd6c722c-410f-4fae-92c0-65c8a7c4babf/documentAI/models/0c1f2f28-ad45-42aa-9519-bf29a534bed7/versions/1
-  invoice
-
-source: https://ml-api.v7.replicated.docai.h2o.dev/v1alpha/projects/bd6c722c-410f-4fae-92c0-65c8a7c4babf/documentAI/models/43e87803-5183-4834-80c3-7ca1d0eeb023/versions/1:download
-        name: projects/bd6c722c-410f-4fae-92c0-65c8a7c4babf/documentAI/models/43e87803-5183-4834-80c3-7ca1d0eeb023/versions/1
-        
-        id card
-source: https://ml-api.v7.replicated.docai.h2o.dev/v1alpha/projects/bd6c722c-410f-4fae-92c0-65c8a7c4babf/documentAI/models/a58b188f-d04e-4873-bcf8-5a8a7048521f/versions/1:download
-        name: projects/bd6c722c-410f-4fae-92c0-65c8a7c4babf/documentAI/models/a58b188f-d04e-4873-bcf8-5a8a7048521f/versions/1
-    
-  
+page classifier
+source: https://ml-api.aws23102-upg-126l.qa.h2o.dev/v1alpha/projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/57d3faac-e277-4ded-a952-d92aac75504f/versions/1:download
+        name: projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/57d3faac-e277-4ded-a952-d92aac75504f/versions/1
+invoice
+source: https://ml-api.aws23102-upg-126l.qa.h2o.dev/v1alpha/projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/43da0354-035e-4037-8f4b-87e0405a96a5/versions/1:download
+        name: projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/43da0354-035e-4037-8f4b-87e0405a96a5/versions/1
+ id card         
+ source: https://ml-api.aws23102-upg-126l.qa.h2o.dev/v1alpha/projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/be582881-38dc-488b-bc42-a3d0b993a98a/versions/1:download
+        name: projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/be582881-38dc-488b-bc42-a3d0b993a98a/versions/1
 
 
   spec:
@@ -57,16 +14,16 @@ source: https://ml-api.v7.replicated.docai.h2o.dev/v1alpha/projects/bd6c722c-410
     artifacts:
 
       # page class model (invoice, drivers-license)
-      - source: https://ml-api.v7.replicated.docai.h2o.dev/v1alpha/projects/bd6c722c-410f-4fae-92c0-65c8a7c4babf/documentAI/models/0c1f2f28-ad45-42aa-9519-bf29a534bed7/versions/1:download
-        name: projects/bd6c722c-410f-4fae-92c0-65c8a7c4babf/documentAI/models/0c1f2f28-ad45-42aa-9519-bf29a534bed7/versions/1
+      - source: https://ml-api.aws23102-upg-126l.qa.h2o.dev/v1alpha/projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/57d3faac-e277-4ded-a952-d92aac75504f/versions/1:download
+        name: projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/57d3faac-e277-4ded-a952-d92aac75504f/versions/1
 
       # invoice
-      - source: https://ml-api.v7.replicated.docai.h2o.dev/v1alpha/projects/bd6c722c-410f-4fae-92c0-65c8a7c4babf/documentAI/models/43e87803-5183-4834-80c3-7ca1d0eeb023/versions/1:download
-        name: projects/bd6c722c-410f-4fae-92c0-65c8a7c4babf/documentAI/models/43e87803-5183-4834-80c3-7ca1d0eeb023/versions/1
+      - source: https://ml-api.aws23102-upg-126l.qa.h2o.dev/v1alpha/projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/43da0354-035e-4037-8f4b-87e0405a96a5/versions/1:download
+        name: projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/43da0354-035e-4037-8f4b-87e0405a96a5/versions/1
 
       # id card
-      - source: https://ml-api.v7.replicated.docai.h2o.dev/v1alpha/projects/bd6c722c-410f-4fae-92c0-65c8a7c4babf/documentAI/models/a58b188f-d04e-4873-bcf8-5a8a7048521f/versions/1:download
-        name: projects/bd6c722c-410f-4fae-92c0-65c8a7c4babf/documentAI/models/a58b188f-d04e-4873-bcf8-5a8a7048521f/versions/1
+      - source: https://ml-api.aws23102-upg-126l.qa.h2o.dev/v1alpha/projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/be582881-38dc-488b-bc42-a3d0b993a98a/versions/1:download
+        name: projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/be582881-38dc-488b-bc42-a3d0b993a98a/versions/1
 
     output_annoset_format:
       options: {}
@@ -99,7 +56,7 @@ source: https://ml-api.v7.replicated.docai.h2o.dev/v1alpha/projects/bd6c722c-410
             parameters:
               predict_only: true
               artifacts:
-                base_model_name_or_path: projects/bd6c722c-410f-4fae-92c0-65c8a7c4babf/documentAI/models/0c1f2f28-ad45-42aa-9519-bf29a534bed7/versions/1
+                base_model_name_or_path: projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/57d3faac-e277-4ded-a952-d92aac75504f/versions/1
 
       - tasks:
           - name: "Predict_token_invoice"
@@ -113,7 +70,7 @@ source: https://ml-api.v7.replicated.docai.h2o.dev/v1alpha/projects/bd6c722c-410
                 else:
                     action=SKIP_PAGE
               artifacts:
-                base_model_name_or_path: projects/bd6c722c-410f-4fae-92c0-65c8a7c4babf/documentAI/models/43e87803-5183-4834-80c3-7ca1d0eeb023/versions/1
+                base_model_name_or_path: projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/43da0354-035e-4037-8f4b-87e0405a96a5/versions/1
 
       - tasks:
           - name: "Predict_token_drivers_license"
@@ -127,7 +84,7 @@ source: https://ml-api.v7.replicated.docai.h2o.dev/v1alpha/projects/bd6c722c-410
                 else:
                     action=SKIP_PAGE
               artifacts:
-                base_model_name_or_path: projects/bd6c722c-410f-4fae-92c0-65c8a7c4babf/documentAI/models/a58b188f-d04e-4873-bcf8-5a8a7048521f/versions/1
+                base_model_name_or_path: projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/be582881-38dc-488b-bc42-a3d0b993a98a/versions/1
 
       - tasks:
           - name: PostProcess
