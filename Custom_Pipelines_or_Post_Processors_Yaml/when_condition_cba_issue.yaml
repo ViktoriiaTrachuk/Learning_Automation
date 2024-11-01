@@ -1,16 +1,90 @@
-page classifier
+#document-ai.v8.replicated.docai.h2o.dev - v7
+  spec:
+  pipeline:
+    artifacts:
+
       # page class model (invoice, drivers-license)
-      - source: https://ml-api.aws23102-upg-126l.qa.h2o.dev/v1alpha/projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/57d3faac-e277-4ded-a952-d92aac75504f/versions/1:download
-        name: projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/57d3faac-e277-4ded-a952-d92aac75504f/versions/1
+      - source: https://ml-api.v8.replicated.docai.h2o.dev/v1alpha/projects/1066e7b3-056f-408c-9e74-62fd3bed4b1a/documentAI/models/06d6ed0b-3b64-4bbe-9e85-fbd031c433b9/versions/1:download
+        name: projects/1066e7b3-056f-408c-9e74-62fd3bed4b1a/documentAI/models/06d6ed0b-3b64-4bbe-9e85-fbd031c433b9/versions/1
 
       # invoice
-      - source: https://ml-api.aws23102-upg-126l.qa.h2o.dev/v1alpha/projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/43da0354-035e-4037-8f4b-87e0405a96a5/versions/1:download
-        name: projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/43da0354-035e-4037-8f4b-87e0405a96a5/versions/1
-
+      - source: https://ml-api.v8.replicated.docai.h2o.dev/v1alpha/projects/1066e7b3-056f-408c-9e74-62fd3bed4b1a/documentAI/models/b2b42bba-f93a-45ce-879a-91d86b2bc1b0/versions/1:download
+        name: projects/1066e7b3-056f-408c-9e74-62fd3bed4b1a/documentAI/models/b2b42bba-f93a-45ce-879a-91d86b2bc1b0/versions/1
+    
       # id card
-      - source: https://ml-api.aws23102-upg-126l.qa.h2o.dev/v1alpha/projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/be582881-38dc-488b-bc42-a3d0b993a98a/versions/1:download
-        name: projects/09930ff1-a7f8-40bc-adcf-df3ee627a576/documentAI/models/be582881-38dc-488b-bc42-a3d0b993a98a/versions/1
+      - source: https://ml-api.v8.replicated.docai.h2o.dev/v1alpha/projects/1066e7b3-056f-408c-9e74-62fd3bed4b1a/documentAI/models/cf7748f4-bf34-4883-9681-3629fb81a003/versions/1:download
+        name: projects/1066e7b3-056f-408c-9e74-62fd3bed4b1a/documentAI/models/cf7748f4-bf34-4883-9681-3629fb81a003/versions/1
+    
+    output_annoset_format:
+      options: {}
+    steps:
+      - tasks:
+          - name: Intake
+            type: PipelineTask
+            class: argus.processors.ocr_processors.Intake
+            parameters:
+              root_docs_path: /code/workdir
+              follow_symlinks: true
+      - tasks:
+          - name: PdfExtract
+            type: PipelineTask
+            class: argus.processors.ocr_processors.PdfTextExtract
+      - tasks:
+          - name: ImageNormalize
+            class: argus.processors.ocr_processors.NormalizeImages
+            parameters:
+              resample_to_dpi: 300
+              normalize_image_format: .jpg
+      - tasks:
+          - name: OCR
+            class: argus.processors.ocr_processors.GenericOcr
+            parameters:
+              ocr_style: BestTextExtract
+      - tasks:
+          - name: Predict
+            class: argus.processors.train_eval_processors.TrainEvalProcessor
+            parameters:
+              predict_only: true
+              artifacts:
+                base_model_name_or_path: projects/1066e7b3-056f-408c-9e74-62fd3bed4b1a/documentAI/models/06d6ed0b-3b64-4bbe-9e85-fbd031c433b9/versions/1
 
+      - tasks:
+          - name: "Predict_token_invoice"
+            class: argus.processors.train_eval_processors.TrainEvalProcessor
+            parameters:
+              predict_only: true
+              when: |
+                p=pages[0]
+                if p.attributes.get('page_class','drivers-license')=='invoice':
+                    action=PROCESS
+                else:
+                    action=SKIP_PAGE
+              artifacts:
+                base_model_name_or_path: projects/1066e7b3-056f-408c-9e74-62fd3bed4b1a/documentAI/models/b2b42bba-f93a-45ce-879a-91d86b2bc1b0/versions/1
+
+      - tasks:
+          - name: "Predict_token_drivers_license"
+            class: argus.processors.train_eval_processors.TrainEvalProcessor
+            parameters:
+              predict_only: true
+              when: |
+                p=pages[0]
+                if p.attributes.get('page_class')=='drivers-license':
+                    action=PROCESS
+                else:
+                    action=SKIP_PAGE
+              artifacts:
+                base_model_name_or_path: projects/1066e7b3-056f-408c-9e74-62fd3bed4b1a/documentAI/models/cf7748f4-bf34-4883-9681-3629fb81a003/versions/1
+
+      - tasks:
+          - name: PostProcess
+            class: argus.processors.post_processors.generic_post_processor.PostProcessor
+            parameters:
+              output_format: json
+              labeling_threshold: 0.8
+    write_all_steps: false
+    cache_processors: false
+    
 
 #aws23103.qa.h2o.dev
   spec:
@@ -274,6 +348,106 @@ page classifier
               labeling_threshold: 0.8
     write_all_steps: false
     cache_processors: false  
+
+
+#aws24 project 1025
+
+spec:
+  pipeline:
+    artifacts:
+
+      # page class model (invoice, drivers-license)
+      - source: https://ml-api.aws24071-upg-130l.qa.h2o.dev/v1alpha/projects/c71779fd-8983-442b-a6f8-10575d5207f5/documentAI/models/9f2475db-a84f-48f9-a6ae-31580c4869f6/versions/1:download
+        name: projects/c71779fd-8983-442b-a6f8-10575d5207f5/documentAI/models/9f2475db-a84f-48f9-a6ae-31580c4869f6/versions/1
+      
+      # invoice
+      - source: https://ml-api.aws24071-upg-130l.qa.h2o.dev/v1alpha/projects/c71779fd-8983-442b-a6f8-10575d5207f5/documentAI/models/19a1b9d2-2145-4efc-8e0f-dfc3bee0d0fc/versions/1:download
+        name: projects/c71779fd-8983-442b-a6f8-10575d5207f5/documentAI/models/19a1b9d2-2145-4efc-8e0f-dfc3bee0d0fc/versions/1
+
+      # id card
+      - source: https://ml-api.aws24071-upg-130l.qa.h2o.dev/v1alpha/projects/c71779fd-8983-442b-a6f8-10575d5207f5/documentAI/models/c7a33a4a-4863-4c60-87c2-546ed484fb45/versions/1:download
+        name: projects/c71779fd-8983-442b-a6f8-10575d5207f5/documentAI/models/c7a33a4a-4863-4c60-87c2-546ed484fb45/versions/1
+
+    output_annoset_format:
+      options: {}
+    steps:
+      - tasks:
+          - name: Intake
+            type: PipelineTask
+            class: argus.processors.ocr_processors.Intake
+            parameters:
+              root_docs_path: /code/workdir
+              follow_symlinks: true
+      - tasks:
+          - name: PdfExtract
+            type: PipelineTask
+            class: argus.processors.ocr_processors.PdfTextExtract
+      - tasks:
+          - name: ImageNormalize
+            class: argus.processors.ocr_processors.NormalizeImages
+            parameters:
+              resample_to_dpi: 300
+              normalize_image_format: .jpg
+      - tasks:
+          - name: OCR
+            class: argus.processors.ocr_processors.GenericOcr
+            parameters:
+              ocr_style: BestTextExtract
+      - tasks:
+          - name: Predict
+            class: argus.processors.train_eval_processors.TrainEvalProcessor
+            parameters:
+              predict_only: true
+              artifacts:
+                base_model_name_or_path: projects/c71779fd-8983-442b-a6f8-10575d5207f5/documentAI/models/9f2475db-a84f-48f9-a6ae-31580c4869f6/versions/1
+
+      - tasks:
+          - name: "Predict_token_invoice"
+            class: argus.processors.train_eval_processors.TrainEvalProcessor
+            parameters:
+              predict_only: true
+              when: |
+                p=pages[0]
+                if p.attributes.get('page_class','drivers-license')=='invoice':
+                    action=PROCESS
+                else:
+                    action=SKIP_PAGE
+              artifacts:
+                base_model_name_or_path: projects/c71779fd-8983-442b-a6f8-10575d5207f5/documentAI/models/19a1b9d2-2145-4efc-8e0f-dfc3bee0d0fc/versions/1
+
+      - tasks:
+          - name: "Predict_token_drivers_license"
+            class: argus.processors.train_eval_processors.TrainEvalProcessor
+            parameters:
+              predict_only: true
+              when: |
+                p=pages[0]
+                if p.attributes.get('page_class')=='drivers-license':
+                    action=PROCESS
+                else:
+                    action=SKIP_PAGE
+              artifacts:
+                base_model_name_or_path: projects/c71779fd-8983-442b-a6f8-10575d5207f5/documentAI/models/c7a33a4a-4863-4c60-87c2-546ed484fb45/versions/1
+
+      - tasks:
+          - name: PostProcess
+            class: argus.processors.post_processors.generic_post_processor.PostProcessor
+            parameters:
+              output_format: json
+              labeling_threshold: 0.8
+    write_all_steps: false
+    cache_processors: false  
+
+
+
+
+page
+  
+    id-card
+
+    invoice
+
+    
 
 
 
