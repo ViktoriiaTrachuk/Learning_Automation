@@ -1,0 +1,13 @@
+#v.0.8.
+#to add this task to the custom pipeline yaml after of before OCR task 
+- tasks:
+          - name: "TakePagesUntil"
+            class: argus.processors.core_processors.MiniProgram
+            parameters:
+              prog: |
+                if extra and 'last_page' in extra and page_id>extra['last_page']:
+                  action=DROP_PAGE
+
+# and to add to bulk scorer yaml 
+# extra field extra={"last_page":30}
+
